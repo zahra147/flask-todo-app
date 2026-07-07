@@ -25,3 +25,17 @@ Categories & priorities
 Responsive UI
 
 Clean, modular code
+📂 Project Structure
+Code
+app.py
+templates/
+    base.html
+    index.html
+    login.html
+    signup.html
+static/
+    css / js (optional)
+🚀 How to Run
+Code
+pip install flask
+python app.py
