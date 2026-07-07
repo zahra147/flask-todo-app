@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow p-4">
+            <h3 class="text-center mb-3">ثبت‌نام</h3>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">نام کاربری</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">رمز عبور</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <button class="btn btn-primary w-100">
+                    <i class="bi bi-person-plus"></i> ثبت‌نام
+                </button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/login">قبلاً ثبت‌نام کرده‌اید؟ ورود</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

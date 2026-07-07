@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4 class="mb-3">سلام {{ username }} 👋</h4>
+
+<div class="card p-4 shadow">
+    <form action="/add" method="POST" class="row g-2">
+
+        <div class="col-md-4">
+            <input name="title" class="form-control" placeholder="عنوان کار..." required>
+        </div>
+
+        <div class="col-md-3">
+            <select name="category" class="form-select">
+                <option>عمومی</option>
+                <option>خانه</option>
+                <option>کار</option>
+                <option>دانشگاه</option>
+                <option>خرید</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <select name="priority" class="form-select">
+                <option>معمولی</option>
+                <option>مهم</option>
+                <option>فوری</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-success w-100">
+                <i class="bi bi-plus-circle"></i> افزودن
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<hr>
+
+<div class="row">
+    {% for item in items %}
+    <div class="col-md-4 mb-3">
+        <div class="card todo-card shadow-sm">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ item.onvan }}</h5>
+
+                <p class="card-text">
+                    دسته: <span class="text-primary">{{ item.category }}</span><br>
+
+                    اولویت:
+                    {% if item.priority == "فوری" %}
+                        <span class="text-danger fw-bold">فوری</span>
+                    {% elif item.priority == "مهم" %}
+                        <span class="text-warning fw-bold">مهم</span>
+                    {% else %}
+                        <span class="text-secondary">معمولی</span>
+                    {% endif %}
+
+                    <br>
+
+                    وضعیت:
+                    {% if item.vaziat == "[✔️]" %}
+                        <span class="text-success fw-bold">انجام شده ✔️</span>
+                    {% else %}
+                        <span class="text-danger fw-bold">انجام نشده ❌</span>
+                    {% endif %}
+                </p>
+
+                <div class="d-flex justify-content-between">
+                    <a href="/toggle/{{ item.id }}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-arrow-repeat"></i> تغییر وضعیت
+                    </a>
+
+                    <a href="/delete/{{ item.id }}" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i> حذف
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
