@@ -25,6 +25,7 @@ Categories & priorities
 Responsive UI
 
 Clean, modular code
+
 📂 Project Structure
 Code
 app.py
